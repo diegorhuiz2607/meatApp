@@ -1,4 +1,4 @@
-package br.com.meatapp.domain;
+package br.com.meatApp.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class User implements Serializable{
 	
 	@NotNull
 	@Email
-	@Column(name="email", unique = true)
+	@Column(name="email")
 	private String email;
 	
 	@NotNull

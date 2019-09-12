@@ -1,4 +1,4 @@
-package br.com.meatapp;
+package br.com.meatApp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

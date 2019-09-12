@@ -1,4 +1,4 @@
-package br.com.meatapp.domain;
+package br.com.meatApp.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
