@@ -1,4 +1,4 @@
-package br.com.meatApp.resources;
+package br.com.meatapp.resources;
 
 import java.net.URI;
 import java.util.List;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.meatApp.domain.MenuItem;
-import br.com.meatApp.services.MenuItemService;
+import br.com.meatapp.domain.MenuItem;
+import br.com.meatapp.service.MenuItemService;
 
 @RestController
 @RequestMapping(value="MenuItems")

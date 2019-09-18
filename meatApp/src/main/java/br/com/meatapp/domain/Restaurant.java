@@ -1,4 +1,4 @@
-package br.com.meatApp.domain;
+package br.com.meatapp.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;

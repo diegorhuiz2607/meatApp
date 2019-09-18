@@ -18,4 +18,5 @@
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
 <fullyQualifiedTypeName name="javax.validation.Valid"/>
+<fullyQualifiedTypeName name="br.com.meatapp.domain.MenuItem"/>
 </qualifiedTypeNameHistroy>
