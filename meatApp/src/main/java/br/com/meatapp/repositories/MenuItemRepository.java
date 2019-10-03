@@ -1,8 +1,10 @@
-package br.com.meatApp.repositories;
+package br.com.meatapp.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import br.com.meatApp.domain.MenuItem;
 
-public interface MenuItemRepository extends JpaRepository<MenuItem, Integer>{
-	
+import br.com.meatapp.domain.MenuItem;
+
+
+public interface MenuItemRepository extends JpaRepository<MenuItem, Integer> {
+
 }

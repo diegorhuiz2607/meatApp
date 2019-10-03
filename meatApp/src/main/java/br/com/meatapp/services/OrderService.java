@@ -1,4 +1,4 @@
-package br.com.meatApp.services;
+package br.com.meatapp.services;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -7,21 +7,18 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.meatApp.domain.OrderItem;
-import br.com.meatApp.domain.OrderItemPK;
-import br.com.meatApp.domain.Orders;
-import br.com.meatApp.repositories.OrderItemRepository;
-import br.com.meatApp.repositories.OrderRepository;
-import br.com.meatApp.services.exception.ObjectNotFoundException;
+import br.com.meatapp.domain.OrderItem;
+import br.com.meatapp.domain.OrderItemPK;
+import br.com.meatapp.domain.Orders;
+import br.com.meatapp.repositories.OrderItemRepository;
+import br.com.meatapp.repositories.OrderRepository;
+import br.com.meatapp.services.exception.ObjectNotFoundException;
 
 @Service
-public class OrderService {
-
-	@Autowired
-	private OrderRepository orderRepository;
+public class OrderService  {
 	
 	@Autowired
-	private MenuItemService menuItemService;
+	private OrderRepository orderRepository;
 	
 	@Autowired
 	private UserService userService;
@@ -30,15 +27,20 @@ public class OrderService {
 	private RestaurantService restaurantService;
 	
 	@Autowired
-	private OrderItemRepository orderItemRespository;
+	private OrderItemRepository orderItemRepository;
 	
+	@Autowired
+	private MenuItemService menuItemService;
+
 	public List<Orders> findAll(){
 		return orderRepository.findAll();
+		
 	}
 	
-	public Orders findById(Integer id) {
+	public Orders findById (Integer id){
 		Optional<Orders> order = orderRepository.findById(id);
-		return order.orElseThrow(() -> new ObjectNotFoundException("Pedido nã encontrado! ID: " + id));
+		return order.orElseThrow(() -> 
+				new ObjectNotFoundException("Pedido não encontardo! ID: " +id));
 	}
 	
 	public Orders insert(Orders order) {
@@ -55,9 +57,13 @@ public class OrderService {
 			it.setOrderItemId(item);
 			it.setMenuItem(menuItemService.findById(it.getMenuItem().getId()));
 			
-			orderItemRespository .save(it);
+			orderItemRepository.save(it);
 			item++;
 		}
+		
 		return order;
 	}
+	
+	 
+	
 }

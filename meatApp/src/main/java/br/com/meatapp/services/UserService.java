@@ -1,4 +1,4 @@
-package br.com.meatApp.services;
+package br.com.meatapp.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,11 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import br.com.meatApp.domain.User;
-import br.com.meatApp.repositories.UserRepository;
-import br.com.meatApp.services.exception.DataIntegrityException;
-import br.com.meatApp.services.exception.ObjectNotFoundException;
-
+import br.com.meatapp.domain.User;
+import br.com.meatapp.repositories.UserRepository;
+import br.com.meatapp.services.exception.DataIntegrityException;
+import br.com.meatapp.services.exception.ObjectNotFoundException;
 
 @Service
 public class UserService {

@@ -15,40 +15,40 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.meatapp.domain.MenuItem;
-import br.com.meatapp.service.MenuItemService;
+import br.com.meatapp.services.MenuItemService;
 
 @RestController
-@RequestMapping(value="MenuItems")
-public class MenuItemResources {
-	
+@RequestMapping(value="menuItens")
+public class MenuItemResource {
+
 	@Autowired
-	private MenuItemService MenuItemService;
+	private MenuItemService menuItemService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<MenuItem>> findAll(){
-		List<MenuItem> MenuItems = MenuItemService.findAll();
-		return ResponseEntity.ok().body(MenuItems);
+		List<MenuItem> menuItem = menuItemService.findAll();
+		return ResponseEntity.ok().body(menuItem);
 	}
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
 	public ResponseEntity<MenuItem> findById(@PathVariable Integer id){
-		MenuItem MenuItem = MenuItemService.findById(id);
-		return ResponseEntity.ok().body(MenuItem);
+		MenuItem restaurant = menuItemService.findById(id);
+		return ResponseEntity.ok().body(restaurant);
 	}
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<MenuItem> insert(@Valid @RequestBody MenuItem MenuItem){
-		MenuItem = MenuItemService.insert(MenuItem);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/id/{id}").buildAndExpand(MenuItem.getId()).toUri();
-		return ResponseEntity.created(uri).body(MenuItem);
+	public ResponseEntity<MenuItem> insert(@Valid @RequestBody MenuItem menuItem){
+		menuItem = menuItemService.insert(menuItem);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/id/{id}").buildAndExpand(menuItem.getId()).toUri();
+		return ResponseEntity.created(uri).body(menuItem);//retorna o usuario
 	}
-	@RequestMapping(value="id/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@Valid @RequestBody MenuItem MenuItem, @PathVariable Integer id){
-		MenuItem = MenuItemService.update(MenuItem, id);
+	@RequestMapping(value="id/{id}", method=RequestMethod.PUT)      //PUT- para alterar alguma coisa
+	public ResponseEntity<Void> update(@Valid @RequestBody MenuItem menuItem, @PathVariable Integer id){
+		menuItem = menuItemService.update(menuItem, id);
 		return ResponseEntity.noContent().build();
 		
 	}
 	@RequestMapping(value="id/{id}",method=RequestMethod.DELETE)
 	public ResponseEntity<MenuItem> delete(@PathVariable Integer id){
-		MenuItemService.delete(id);
-		return ResponseEntity.noContent().build();
+		menuItemService.delete(id);
+		return ResponseEntity.noContent().build();//nao retorna nada
 	}
 }
